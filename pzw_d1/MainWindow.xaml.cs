@@ -20,9 +20,52 @@ namespace pzw_d1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int _selectedIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Left.Click += new RoutedEventHandler(Left_Click);
+            this.Right.Click += new RoutedEventHandler(Right_Click);
+        }
+
+        void Left_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrangeRectangle();
+        }
+        void Right_Click(object sender, RoutedEventArgs e)
+        {
+            AddRedRectangle();
+        }
+
+
+        void AddRedRectangle()
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = 350;
+            rectangle.Height = 50;
+            rectangle.Margin = new Thickness(10);
+            rectangle.Fill = Brushes.Red;
+            rectangle.Stroke = Brushes.Black;
+
+            this.RedRectangleContainer.Children.Add(rectangle);
+        }
+
+        void AddOrangeRectangle()
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = 100;
+            rectangle.Height = 100;
+            rectangle.Margin = new Thickness(10);
+            rectangle.Fill = Brushes.Orange;
+
+            this.OrangeRectangleContainer.Children.Add(rectangle);
+        }
+
     }
+
 }
